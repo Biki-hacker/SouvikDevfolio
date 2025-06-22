@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --wave-x: 0;
+  --wave-y: 0;
+  --wave-start: 1;
+}
+
+@layer base {
+  body {
+    @apply bg-light dark:bg-dark text-dark dark:text-light transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .nav-button {
+    @apply relative px-4 py-2 text-sm font-medium transition-all duration-300 hover:text-primary;
+  }
+  
+  .nav-button.active::after {
+    @apply content-['.'] absolute -bottom-1 left-1/2 -translate-x-1/2 text-primary;
+  }
+
+  .floating-nav {
+    @apply fixed top-4 left-1/2 -translate-x-1/2 bg-white/10 dark:bg-dark/10 backdrop-blur-lg rounded-full px-4 py-2 shadow-lg;
+  }
+
+  .tech-stack-item {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-light/10 dark:hover:bg-dark/10;
+  }
+
+  .project-card {
+    @apply bg-white/5 dark:bg-dark/5 backdrop-blur-lg rounded-xl p-4 shadow-lg transition-all duration-300 hover:scale-105;
+  }
+
+  .resume-btn {
+    @apply flex items-center gap-2 px-5 py-2 bg-primary text-white rounded-lg font-semibold shadow transition-all focus:outline-none focus:ring-2 focus:ring-primary;
+    @apply hover:bg-primary/90 hover:scale-105 hover:-translate-y-1 hover:shadow-xl;
+  }
+}
+
+/* Theme wave animation */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--wave-x) var(--wave-y),
+    var(--wave-color) 0%,
+    transparent 100%
+  );
+  opacity: calc(1 - var(--wave-start));
+  transition: opacity 0.5s ease-out;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body.dark::before {
+  --wave-color: #1a1a1a;
+}
+
+body:not(.dark)::before {
+  --wave-color: #ffffff;
+}
