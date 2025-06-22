@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { FaMoon, FaSun, FaBars } from 'react-icons/fa';
 import ThemeWaveOverlay from './ThemeWaveOverlay';
 import ShinyText from './ShinyText';
 
@@ -8,6 +8,7 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [wave, setWave] = useState(null);
   const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,6 +65,13 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
     }
   };
 
+  const handleMenuToggle = () => setIsMenuOpen((prev) => !prev);
+
+  const handleMenuNavClick = (id) => {
+    handleNavClick(id);
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
     { name: 'Home', id: 'home' },
     { name: 'About', id: 'about' },
@@ -93,6 +101,15 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
     </motion.button>
   );
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+    return () => document.body.classList.remove('overflow-hidden');
+  }, [isMenuOpen]);
+
   return (
     <>
       {wave && (
@@ -103,55 +120,120 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
           onComplete={handleWaveComplete}
         />
       )}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark/80">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className={`flex items-center gap-3 ${isScrolled ? 'hidden' : 'block'}`}
-          >
-            <div className="w-10 h-10 rounded-full overflow-hidden bg-primary/20 flex items-center justify-center">
-              <motion.div
-                className="relative w-full h-full"
-                style={{ perspective: 600 }}
-                whileHover={{ rotateY: 180 }}
-                transition={{ duration: 0.15, ease: 'linear' }}
-              >
-                <img
-                  src="/Souvik.webp"
-                  alt="Souvik Dhara"
-                  className="w-full h-full object-cover rounded-full absolute top-0 left-0"
-                  style={{ backfaceVisibility: 'hidden' }}
-                />
-                <img
-                  src="/Souvik.webp"
-                  alt="Souvik Dhara Mirrored"
-                  className="w-full h-full object-cover rounded-full absolute top-0 left-0"
-                  style={{ transform: 'scaleX(-1) rotateY(180deg)', backfaceVisibility: 'hidden' }}
-                />
-              </motion.div>
-            </div>
-            <motion.h1 
-              className="text-xl font-bold relative"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              <ShinyText text="Souvik Dhara" className="text-primary" />
-            </motion.h1>
-          </motion.div>
 
-          <nav className={`flex items-center gap-4 ${isScrolled ? 'hidden' : 'block'}`}>
-            {navItems.map(renderNavButton)}
-            <motion.button
-              onClick={handleThemeToggle}
-              className="p-2 rounded-full hover:bg-light/10 dark:hover:bg-dark/10"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+      {/* Mobile Menu Drawer and Backdrop (always rendered at root) */}
+      {isMenuOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 bg-black/50 z-[99] md:hidden"
+            onClick={handleMenuToggle}
+            aria-label="Close menu backdrop"
+          />
+          {/* Drawer */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="fixed top-0 right-0 h-full w-3/4 max-w-xs bg-white dark:bg-dark shadow-lg z-[100] flex flex-col items-start p-6 md:hidden"
+          >
+            <button
+              className="self-end mb-8 text-2xl"
+              onClick={handleMenuToggle}
+              aria-label="Close menu"
             >
-              {isDarkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-600" />}
-            </motion.button>
-          </nav>
-        </div>
+              ×
+            </button>
+            <nav className="flex flex-col gap-6 w-full">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => handleMenuNavClick(item.id)}
+                  className={`text-lg font-medium text-left w-full transition-all duration-300 hover:text-primary ${activeSection === item.id ? 'text-primary' : ''}`}
+                >
+                  {item.name}
+                </button>
+              ))}
+            </nav>
+          </motion.div>
+        </>
+      )}
+
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-dark/80">
+        {/* Only show main header bar when not scrolled */}
+        {!isScrolled && (
+          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-3"
+            >
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-primary/20 flex items-center justify-center">
+                <motion.div
+                  className="relative w-full h-full"
+                  style={{ perspective: 600 }}
+                  whileHover={{ rotateY: 180 }}
+                  transition={{ duration: 0.15, ease: 'linear' }}
+                >
+                  <img
+                    src="/Souvik.webp"
+                    alt="Souvik Dhara"
+                    className="w-full h-full object-cover rounded-full absolute top-0 left-0"
+                    style={{ backfaceVisibility: 'hidden' }}
+                  />
+                  <img
+                    src="/Souvik.webp"
+                    alt="Souvik Dhara Mirrored"
+                    className="w-full h-full object-cover rounded-full absolute top-0 left-0"
+                    style={{ transform: 'scaleX(-1) rotateY(180deg)', backfaceVisibility: 'hidden' }}
+                  />
+                </motion.div>
+              </div>
+              <motion.h1 
+                className="text-xl font-bold relative"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                <ShinyText text="Souvik Dhara" className="text-primary" />
+              </motion.h1>
+            </motion.div>
+
+            {/* Desktop Nav */}
+            <nav className="items-center gap-4 hidden md:flex">
+              {navItems.map(renderNavButton)}
+              <motion.button
+                onClick={handleThemeToggle}
+                className="p-2 rounded-full hover:bg-light/10 dark:hover:bg-dark/10"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {isDarkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-600" />}
+              </motion.button>
+            </nav>
+
+            {/* Mobile/Tablet Nav */}
+            <div className="flex items-center gap-2 md:hidden">
+              <motion.button
+                onClick={handleThemeToggle}
+                className="p-2 rounded-full hover:bg-light/10 dark:hover:bg-dark/10"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {isDarkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-600" />}
+              </motion.button>
+              <motion.button
+                onClick={handleMenuToggle}
+                className="p-2 rounded-full hover:bg-light/10 dark:hover:bg-dark/10"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Open menu"
+              >
+                <FaBars className="text-2xl" />
+              </motion.button>
+            </div>
+          </div>
+        )}
 
         {/* Floating name and image window - left side */}
         {isScrolled && (
@@ -193,13 +275,15 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
           </motion.div>
         )}
 
+        {/* Floating nav palette (right side) */}
         {isScrolled && (
           <motion.div
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             className="floating-nav"
           >
-            <nav className="flex items-center gap-4">
+            {/* Desktop floating nav */}
+            <nav className="items-center gap-4 hidden md:flex">
               {navItems.map(renderNavButton)}
               <motion.button
                 onClick={handleThemeToggle}
@@ -210,6 +294,26 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
                 {isDarkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-600" />}
               </motion.button>
             </nav>
+            {/* Mobile/Tablet floating nav */}
+            <div className="flex items-center gap-2 md:hidden">
+              <motion.button
+                onClick={handleThemeToggle}
+                className="p-2 rounded-full hover:bg-light/10 dark:hover:bg-dark/10"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {isDarkMode ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-600" />}
+              </motion.button>
+              <motion.button
+                onClick={handleMenuToggle}
+                className="p-2 rounded-full hover:bg-light/10 dark:hover:bg-dark/10"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Open menu"
+              >
+                <FaBars className="text-2xl" />
+              </motion.button>
+            </div>
           </motion.div>
         )}
       </header>
