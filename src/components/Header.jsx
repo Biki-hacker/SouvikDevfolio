@@ -280,7 +280,7 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
           <motion.div
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="floating-nav"
+            className="fixed top-4 right-4 z-50 bg-white/10 dark:bg-dark/10 backdrop-blur-lg rounded-full px-4 py-2 shadow-lg"
           >
             {/* Desktop floating nav */}
             <nav className="items-center gap-4 hidden md:flex">
