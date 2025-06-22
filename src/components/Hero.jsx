@@ -41,6 +41,19 @@ const Hero = () => {
           <span>Applications.</span>
         </div>
       </div>
+      {/* Bouncing Arrow Scroll Indicator */}
+      <motion.div 
+        className="absolute left-1/2 bottom-8 transform -translate-x-1/2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8 }}
+      >
+        <div className="animate-bounce">
+          <svg className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
+      </motion.div>
     </section>
   );
 };

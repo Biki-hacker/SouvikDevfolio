@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import About from './components/About'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
 import StarryBackground from './components/StarryBackground'
 import AnimatedSpaceBackground from './components/AnimatedSpaceBackground'
 // import StarryBackground from './components/StarryBackground'
+
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true)
@@ -32,11 +33,19 @@ function App() {
         <Header onThemeToggle={handleThemeToggle} isDarkMode={isDarkMode} />
         <main>
           <Hero />
-          <About />
-          <Projects />
-          <Contact />
+          <Suspense fallback={<div className="text-center py-10">Loading About...</div>}>
+            <About />
+          </Suspense>
+          <Suspense fallback={<div className="text-center py-10">Loading Projects...</div>}>
+            <Projects />
+          </Suspense>
+          <Suspense fallback={<div className="text-center py-10">Loading Contact...</div>}>
+            <Contact />
+          </Suspense>
         </main>
-        <Footer />
+        <Suspense fallback={<div className="text-center py-4">Loading Footer...</div>}>
+          <Footer />
+        </Suspense>
       </div>
     </>
   )
