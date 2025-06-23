@@ -43,7 +43,7 @@ const Hero = () => {
       </div>
       {/* Bouncing Arrow Scroll Indicator */}
       <motion.div 
-        className="absolute left-1/2 bottom-8 transform -translate-x-1/2"
+        className="w-full flex justify-center absolute bottom-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
