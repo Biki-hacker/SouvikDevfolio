@@ -21,6 +21,16 @@ function App() {
     }
   }, [isDarkMode])
 
+  useEffect(() => {
+    // Chrome-only detection (not Edge, not Opera)
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor) && !/Edg/.test(navigator.userAgent) && !/OPR/.test(navigator.userAgent);
+    if (isChrome) {
+      document.body.classList.add('chrome-only');
+    } else {
+      document.body.classList.remove('chrome-only');
+    }
+  }, []);
+
   const handleThemeToggle = () => {
     setIsDarkMode(!isDarkMode)
   }

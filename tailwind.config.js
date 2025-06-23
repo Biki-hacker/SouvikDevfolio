@@ -38,7 +38,10 @@ export default {
           '0%': { 'background-position': '100%' },
           '100%': { 'background-position': '-100%' },
         }
-      }
+      },
+      fontFamily: {
+        rajdhani: ['Rajdhani', 'sans-serif'],
+      },
     },
   },
   plugins: [],

@@ -163,7 +163,7 @@ const About = () => {
 
   return (
     <section id="about" className="min-h-screen py-20 px-4">
-      <div className="container mx-auto">
+      <div className="container max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left side - About text */}
           <motion.div
@@ -194,7 +194,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center"
+            className="flex items-center justify-center max-w-md w-full mx-auto"
           >
             <TiltedCard
               altText="Personal Information Card"
@@ -223,7 +223,7 @@ const About = () => {
           className="mt-16"
         >
           <h3 className="text-2xl font-bold mb-8 text-center">Tech Stack</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {techStack.map((tech, index) => (
               <div
                 key={tech.name}

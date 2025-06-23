@@ -64,3 +64,33 @@ body.dark::before {
 body:not(.dark)::before {
   --wave-color: #ffffff;
 }
+
+/* Rajdhani font-face */
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/rajdhani-v16-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer utilities {
+  .font-rajdhani {
+    font-family: 'Rajdhani', sans-serif;
+  }
+}
+
+/* Chrome-specific font size override for hero section (now only if body.chrome-only) */
+body.chrome-only .chrome-hero-text {
+  font-size: 1.5rem !important;
+}
+@media (min-width: 768px) {
+  body.chrome-only .chrome-hero-text {
+    font-size: 2.25rem !important;
+  }
+}
+@media (min-width: 1024px) {
+  body.chrome-only .chrome-hero-text {
+    font-size: 3rem !important;
+  }
+}

@@ -17,7 +17,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4">
       <div className="text-center">
-        <div className="flex flex-wrap justify-center items-center gap-2 text-2xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <div className="flex flex-wrap justify-center items-center gap-2 text-2xl md:text-5xl lg:text-6xl font-bold mb-6 font-rajdhani chrome-hero-text">
           <AnimatePresence mode="wait">
             <motion.span
               key={greetings[greetingIndex]}
