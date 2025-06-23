@@ -95,8 +95,8 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-          <p className="text-gray-600 dark:text-gray-300">
+          <h2 className="text-4xl font-bold mb-4 font-['Caveat']">Get in Touch</h2>
+          <p className="text-gray-600 dark:text-gray-300 text-lg font-['Bad_Script']">
             Have a project in mind? Let's discuss how we can work together.
           </p>
         </motion.div>

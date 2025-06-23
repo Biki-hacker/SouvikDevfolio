@@ -65,6 +65,78 @@ body:not(.dark)::before {
   --wave-color: #ffffff;
 }
 
+/* Bubblegum Sans font-face */
+@font-face {
+  font-family: 'Bubblegum Sans';
+  src: url('/fonts/bubblegum-sans-v21-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Playpen Sans font-face */
+@font-face {
+  font-family: 'Playpen Sans';
+  src: url('/fonts/playpen-sans-v21-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Caveat font-face */
+@font-face {
+  font-family: 'Caveat';
+  src: url('/fonts/caveat-v22-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bad Script font-face */
+@font-face {
+  font-family: 'Bad Script';
+  src: url('/fonts/bad-script-v17-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Kalam font-face */
+@font-face {
+  font-family: 'Kalam';
+  src: url('/fonts/kalam-v17-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Share Tech Mono font-face */
+@font-face {
+  font-family: 'Share Tech Mono';
+  src: url('/fonts/share-tech-mono-v15-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Audiowide font-face */
+@font-face {
+  font-family: 'Audiowide';
+  src: url('/fonts/audiowide-v21-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Orbitron font-face */
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/fonts/orbitron-v34-latin-regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Rajdhani font-face */
 @font-face {
   font-family: 'Rajdhani';

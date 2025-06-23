@@ -172,8 +172,8 @@ const About = () => {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-bold mb-6">About Me</h2>
-            <p className="text-lg leading-relaxed mb-8">
+            <h2 className="text-3xl font-bold mb-6 font-['Bubblegum_Sans']">About Me</h2>
+            <p className="text-lg leading-relaxed mb-8 font-['Playpen_Sans']">
               I am a passionate Full Stack Developer with expertise in building modern web and mobile applications.
               My journey in software development has equipped me with a strong foundation in both frontend and
               backend technologies, allowing me to create seamless and efficient solutions.
@@ -222,7 +222,7 @@ const About = () => {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <h3 className="text-2xl font-bold mb-8 text-center">Tech Stack</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center font-['Audiowide']">Tech Stack</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
             {techStack.map((tech, index) => (
               <div

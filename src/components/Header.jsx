@@ -83,7 +83,7 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
     <motion.button
       key={item.id}
       onClick={() => handleNavClick(item.id)}
-      className={`nav-button relative px-4 py-2 text-sm font-medium transition-all duration-300 hover:text-primary ${
+      className={`nav-button relative px-4 py-2 text-sm font-['Share_Tech_Mono'] font-bold transition-all duration-300 hover:text-primary ${
         activeSection === item.id ? 'text-primary' : ''
       }`}
       whileHover={{ scale: 1.05 }}
@@ -150,7 +150,7 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
                 <button
                   key={item.id}
                   onClick={() => handleMenuNavClick(item.id)}
-                  className={`text-lg font-medium text-left w-full transition-all duration-300 hover:text-primary ${activeSection === item.id ? 'text-primary' : ''}`}
+                  className={`text-lg font-['Share_Tech_Mono'] font-bold text-left w-full transition-all duration-300 hover:text-primary ${activeSection === item.id ? 'text-primary' : ''}`}
                 >
                   {item.name}
                 </button>
@@ -191,7 +191,7 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
                 </motion.div>
               </div>
               <motion.h1 
-                className="text-xl font-bold relative"
+                className="text-xl font-bold relative font-['Kalam']"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
@@ -265,7 +265,7 @@ const Header = ({ onThemeToggle, isDarkMode }) => {
                 </motion.div>
               </div>
               <motion.h1 
-                className="text-lg font-bold relative"
+                className="text-lg font-bold relative font-['Kalam']"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >

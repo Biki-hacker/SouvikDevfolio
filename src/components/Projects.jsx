@@ -240,7 +240,7 @@ const Projects = () => {
   return (
     <section id="projects" className="pt-16 pb-8 px-4">
       <div className="w-full max-w-[1600px] mx-auto">
-        <h2 className="text-3xl font-bold mb-12 text-center text-gray-800 dark:text-white">
+        <h2 className="text-3xl font-bold mb-12 text-center text-gray-800 dark:text-white font-['Orbitron']">
           Projects
         </h2>
         
