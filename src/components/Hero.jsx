@@ -18,18 +18,22 @@ const Hero = () => {
     <section id="home" className="min-h-screen flex items-center justify-center px-4">
       <div className="text-center">
         <div className="flex flex-wrap justify-center items-center gap-2 text-2xl md:text-5xl lg:text-6xl font-bold mb-6 font-rajdhani chrome-hero-text">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={greetings[greetingIndex]}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.5 }}
-              className="text-red-500"
-            >
-              {greetings[greetingIndex]}
-            </motion.span>
-          </AnimatePresence>
+          {/* Red box for animated greeting */}
+          <div className="flex items-center justify-center w-[210px] h-[1.2em] px-4 py-1 border-2 border-red-500 rounded-lg">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={greetings[greetingIndex]}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.5 }}
+                className="text-red-500"
+                style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}
+              >
+                {greetings[greetingIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </div>
           <span>, I am a</span>
           <span className="flex items-center text-red-500">
             &lt;<AnimatedText text="Full Stack Developer" size="5xl" className="text-red-500" />/&gt;

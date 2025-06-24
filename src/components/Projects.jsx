@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Html, Billboard, useGLTF, Environment } from '@react-three/drei';
 import ProjectCard from './ProjectCards';
@@ -162,52 +161,52 @@ const Projects = () => {
   
   const projects = [
     {
-      title: 'Project 1',
-      description: 'A full-stack web application built with React and Node.js',
-      tags: ['React', 'Node.js', 'MongoDB'],
+      title: 'Onvora',
+      description: 'A fullstack B2B client onboarding SaaS.',
+      tags: ['Angular', 'Nest', 'Supabase', 'Redis', 'WebRTC', 'PostgreSQL'],
       image: null,
-      liveUrl: 'https://example.com/project1',
-      repoUrl: 'https://github.com/user/project1',
+      liveUrl: 'https://example.com/project',
+      repoUrl: 'https://github.com/user/project',
     },
     {
-      title: 'Project 2',
-      description: 'Mobile app developed using Flutter',
-      tags: ['Flutter', 'Firebase'],
+      title: 'Florra',
+      description: 'Gamified Web3 mobile app with LLM, map & live weather integration.',
+      tags: ['Flutter', 'Supabase', 'Firebase', 'Web3', 'Redis', 'LLM', 'Go'],
       image: null,
-      liveUrl: 'https://example.com/project2',
-      repoUrl: 'https://github.com/user/project2',
+      liveUrl: 'https://example.com/project',
+      repoUrl: 'https://github.com/user/project',
     },
     {
-      title: 'Project 3',
-      description: 'E-commerce platform with Angular',
-      tags: ['Angular', 'TypeScript', 'Node.js'],
+      title: 'VoiceBox Anonymous',
+      description: 'End-to-End encrypted realtime messaging platform. B2B SaaS.',
+      tags: ['React', 'Node', 'MongoDB', 'WebSocket', 'Supabase'],
       image: null,
-      liveUrl: 'https://example.com/project3',
-      repoUrl: 'https://github.com/user/project3',
+      liveUrl: 'https://voicebox-anonymous.vercel.app',
+      repoUrl: 'https://github.com/Biki-hacker/VoiceboxAnonymous',
     },
     {
-      title: 'Project 4',
-      description: 'Real-time chat application',
-      tags: ['React', 'Socket.io', 'Express'],
+      title: 'Upcoming Project',
+      description: 'In development.',
+      tags: ['Next.js', 'Node.js'],
       image: null,
-      liveUrl: 'https://example.com/project4',
-      repoUrl: 'https://github.com/user/project4',
+      liveUrl: 'https://example.com/project',
+      repoUrl: 'https://github.com/user/project',
     },
     {
-      title: 'Project 5',
-      description: 'Task management system',
-      tags: ['Vue.js', 'Django', 'PostgreSQL'],
+      title: 'Upcoming Project',
+      description: 'In development.',
+      tags: ['Flutter', 'Node', 'MongoDB'],
       image: null,
-      liveUrl: 'https://example.com/project5',
-      repoUrl: 'https://github.com/user/project5',
+      liveUrl: 'https://example.com/project',
+      repoUrl: 'https://github.com/user/project',
     },
     {
-      title: 'Project 6',
-      description: 'Weather App with real-time updates',
-      tags: ['Flutter', 'Dart', 'API'],
+      title: 'Upcoming Project',
+      description: 'In development.',
+      tags: ['React Native', 'Expo', 'Go'],
       image: null,
-      liveUrl: 'https://example.com/project6',
-      repoUrl: 'https://github.com/user/project6',
+      liveUrl: 'https://example.com/project',
+      repoUrl: 'https://github.com/user/project',
     },
   ];
 
