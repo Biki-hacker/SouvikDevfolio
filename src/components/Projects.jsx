@@ -180,7 +180,7 @@ const Projects = () => {
       title: 'VoiceBox Anonymous',
       description: 'End-to-End encrypted realtime messaging platform. B2B SaaS.',
       tags: ['React', 'Node', 'MongoDB', 'WebSocket', 'Supabase'],
-      image: null,
+      image: '/VBALanding.webp',
       liveUrl: 'https://voicebox-anonymous.vercel.app',
       repoUrl: 'https://github.com/Biki-hacker/VoiceboxAnonymous',
     },
