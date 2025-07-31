@@ -17,7 +17,7 @@ const ProjectCard = ({ project, isActive }) => {
       return;
     }
 
-    // Multiple methods to ensure navigation works
+    //         Multiple methods to ensure navigation works
     try {
       // Method 1: location.href to open in same tab
       window.location.href = url;
